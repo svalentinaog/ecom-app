@@ -52,10 +52,30 @@ export default function Footer() {
             <div className="footer-column">
               <h3>Menu</h3>
               <div className="footer-items">
-                <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Inicio</NavLink>
-                <NavLink to="/shop" className={({ isActive }) => (isActive ? "active" : "")}>Tienda</NavLink>
-                <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>Contacto</NavLink>
-                <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>Acceso</NavLink>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Inicio
+                </NavLink>
+                <NavLink
+                  to="/shop"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Tienda
+                </NavLink>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Contacto
+                </NavLink>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Acceso
+                </NavLink>
               </div>
             </div>
 
@@ -95,7 +115,10 @@ export default function Footer() {
           </div>
           <hr />
           <div className="footer-columns">
-            <p className="footer-copyright">© 2025 All Rights Reserved</p>
+            <p className="footer-copyright">
+              © 2025 Aprendiz ADSO Sandra Valentina Ortiz Gonzalez Ficha
+              (3118288)
+            </p>
             <div className="payment-methods">
               <img src={visa} alt="visa" />
               <img src={mastercard} alt="mastercard" />
