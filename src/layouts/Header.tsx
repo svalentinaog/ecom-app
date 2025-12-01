@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   cart,
   logoDark,
@@ -41,7 +42,12 @@ export default function Header() {
           {/* Acceso */}
           <div className="top-bar-item">
             <img src={userAccess} alt="userAccess" />
-            <p>Acceso</p>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Acceso
+            </NavLink>
           </div>
         </div>
 
@@ -49,21 +55,40 @@ export default function Header() {
 
         {/* Navbar */}
         <nav className="navbar">
-          <img src={logoDark} alt="LOGO" className="logo" />
+          <Link to="/">
+            <img src={logoDark} alt="LOGO" className="logo" />
+          </Link>
 
           <div className="navbar-content">
             {/* Menú principal oculto en móvil */}
             <div className="menu-items">
-              <a href="#">Inicio</a>
-              <a href="#">Tienda</a>
-              <a href="#">Contacto</a>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Inicio
+              </NavLink>
+              <NavLink
+                to="/shop"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Tienda
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Contacto
+              </NavLink>
             </div>
 
             {/* SearchBar */}
             <SearchBar value={search} onChange={handleSearch} />
 
             {/* Carrito */}
-            <img src={cart} alt="Cart" />
+            <Link to="/cart">
+              <img src={cart} alt="Cart" />
+            </Link>
 
             {/* Hamburguesa para móvil */}
             <img
@@ -79,10 +104,24 @@ export default function Header() {
         {menuOpen && (
           <div className="mobile-menu">
             <SearchBar value={search} onChange={handleSearch} />{" "}
-            {/* Input visible */}
-            <a href="#">Inicio</a>
-            <a href="#">Tienda</a>
-            <a href="#">Contacto</a>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Inicio
+            </NavLink>
+            <NavLink
+              to="/shop"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Tienda
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Contacto
+            </NavLink>
           </div>
         )}
       </div>

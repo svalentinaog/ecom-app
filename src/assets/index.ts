@@ -40,6 +40,7 @@ import search from "./icons/search.svg";
 
 // Hamburger Menu Icon
 import hamburger from "./icons/hamburger.svg";
+import comingSoon from "./icons/coming-soon.png";
 
 export {
   logoLight,
@@ -68,4 +69,5 @@ export {
   cart,
   search,
   hamburger,
+  comingSoon,
 };

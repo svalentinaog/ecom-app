@@ -12,6 +12,14 @@
     justify-content: center;
   }
 
+  .product-cta {
+    a {
+      margin: 0;
+      text-decoration: none;
+      color: $title;
+    }
+  }
+
   // Responsive
   @media (max-width: 1024px) {
     gap: 32px;

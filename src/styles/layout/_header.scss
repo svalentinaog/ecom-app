@@ -35,8 +35,15 @@ header {
         align-items: center;
         gap: 8px;
 
-        p {
+        p,
+        a {
           margin: 0;
+          text-decoration: none;
+          color: $text-paragraph;
+        }
+
+        a.active {
+          color: $primary;
         }
       }
     }
@@ -50,6 +57,10 @@ header {
         text-decoration: none;
         font-size: 14px;
         text-transform: uppercase;
+
+        &.active {
+          color: $primary;
+        }
       }
     }
 
@@ -63,7 +74,17 @@ header {
         justify-content: center;
         align-items: center;
         gap: 24px;
+
+        .hamburger-menu {
+          display: none;
+        }
       }
+
+
+    }
+
+    .mobile-menu {
+      display: none;
     }
   }
 
@@ -111,6 +132,7 @@ header {
           }
 
           .hamburger-menu {
+            display: block;
             width: 24px;
             height: 24px;
             cursor: pointer;
@@ -129,6 +151,10 @@ header {
           font-size: 16px;
           text-decoration: none;
           color: $title;
+
+          &.active {
+            color: $primary;
+          }
         }
       }
     }

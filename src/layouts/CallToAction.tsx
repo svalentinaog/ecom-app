@@ -17,7 +17,9 @@ export default function CallToAction() {
             <h2>[Texto principal banner o promoción]</h2>
             <p>[Breve descripción]</p>
             <div>
-              <button className="btn btn--primary">Contacto</button>
+              <button className="btn btn--primary">
+                <a href="/contact">Contacto</a>
+              </button>
             </div>
           </div>
         </div>

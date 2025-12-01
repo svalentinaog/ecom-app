@@ -40,8 +40,10 @@ export default function ProductListSection() {
             ))}
           </div>
 
-          <div className="products-cta">
-            <button className="btn btn--primary">Ver productos</button>
+          <div className="product-cta">
+            <button className="btn btn--primary">
+              <a href="/shop">Ver productos</a>
+            </button>
           </div>
         </div>
       </Container>

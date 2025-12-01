@@ -1,4 +1,5 @@
 import Container from "@/layouts/Container";
+import { Link, NavLink } from "react-router-dom";
 import {
   logoLight,
   facebook,
@@ -24,9 +25,9 @@ export default function Footer() {
           <div className="footer-columns">
             {/* Column 1 */}
             <div className="footer-column">
-              <div>
+              <Link to="/">
                 <img src={logoLight} alt="LOGO" />
-              </div>
+              </Link>
               <p>[Breve descripción de la empresa o tienda]</p>
               <div className="footer-social">
                 <a href="#">
@@ -51,10 +52,10 @@ export default function Footer() {
             <div className="footer-column">
               <h3>Menu</h3>
               <div className="footer-items">
-                <a href="#">Inicio</a>
-                <a href="#">Tienda</a>
-                <a href="#">Contacto</a>
-                <a href="#">Acceso</a>
+                <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Inicio</NavLink>
+                <NavLink to="/shop" className={({ isActive }) => (isActive ? "active" : "")}>Tienda</NavLink>
+                <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>Contacto</NavLink>
+                <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>Acceso</NavLink>
               </div>
             </div>
 
