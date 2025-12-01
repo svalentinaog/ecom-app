@@ -1,0 +1,136 @@
+header {
+  background: $white;
+
+  hr {
+    border: none;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .header-content {
+    width: 100%;
+    max-width: 1280px;
+    padding: 1rem 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .top-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+      }
+
+      .top-bar-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .menu-items {
+      display: flex;
+      gap: 24px;
+
+      a {
+        color: $title;
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .navbar-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .header-content {
+      padding: 0.75rem 1rem;
+
+      .top-bar {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .top-bar-left {
+          gap: 12px;
+
+          .top-bar-item {
+            p {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        img.logo {
+          width: 80px;
+        }
+
+        .navbar-content {
+          display: flex;
+          gap: 16px;
+          align-items: center;
+
+          .menu-items {
+            display: none;
+          }
+
+          img[alt="Cart"] {
+            width: 32px;
+            height: 32px;
+          }
+
+          .hamburger-menu {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      /* Menú móvil desplegable */
+      .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 1rem;
+
+        a {
+          font-size: 16px;
+          text-decoration: none;
+          color: $title;
+        }
+      }
+    }
+  }
+}

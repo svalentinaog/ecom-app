@@ -1,0 +1,66 @@
+[
+  {
+    "id": "p1",
+    "name": "Producto 1",
+    "price": 4999,
+    "category": "Categoria 1",
+    "image": "/images/product-image.jpg",
+    "points": 4.5
+  },
+  {
+    "id": "p2",
+    "name": "Producto 2",
+    "price": 5999,
+    "category": "Categoria 2",
+    "image": "/images/product-image.jpg",
+    "points": 4.2
+  },
+  {
+    "id": "p3",
+    "name": "Producto 3",
+    "price": 3999,
+    "category": "Categoria 2",
+    "image": "/images/product-image.jpg",
+    "points": 4.8
+  },
+  {
+    "id": "p4",
+    "name": "Producto 4",
+    "price": 7999,
+    "category": "Categoria 2",
+    "image": "/images/product-image.jpg",
+    "points": 4.6
+  },
+  {
+    "id": "p5",
+    "name": "Producto 5",
+    "price": 6999,
+    "category": "Categoria 1",
+    "image": "/images/product-image.jpg",
+    "points": 4.3
+  },
+  {
+    "id": "p6",
+    "name": "Producto 6",
+    "price": 5499,
+    "category": "Categoria 2",
+    "image": "/images/product-image.jpg",
+    "points": 4.7
+  },
+  {
+    "id": "p7",
+    "name": "Producto 7",
+    "price": 4599,
+    "category": "Categoria 1",
+    "image": "/images/product-image.jpg",
+    "points": 4.1
+  },
+  {
+    "id": "p8",
+    "name": "Producto 8",
+    "price": 8999,
+    "category": "Categoria 2",
+    "image": "/images/product-image.jpg",
+    "points": 4.9
+  }
+]
