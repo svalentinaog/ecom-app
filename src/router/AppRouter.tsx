@@ -16,7 +16,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Redirección automática de "/" a "/es" (o tu idioma por defecto) */}
-        <Route path="/" element={<Navigate to="/" replace />} />
+        <Route path="/" element={<Navigate to="/es" replace />} />
 
         <Route path="/:lang" element={<BaseLayout />}>
           <Route index element={<HomePage />} />
