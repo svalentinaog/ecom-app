@@ -13,7 +13,7 @@ export default function Breadcrumbs() {
       <ul className="breadcrumbs__list">
         <li className="breadcrumbs__item">
           <Link to={`/${lang}`} className="breadcrumbs__link">
-            {t("breadcrumbs.home")}
+            {t("navigation.home")}
           </Link>
           {pathnames.length > 0 && <p className="breadcrumbs__separator">/</p>}
         </li>
@@ -24,7 +24,7 @@ export default function Breadcrumbs() {
           const to = `/${lang}/${pathnames.slice(0, index + 1).join("/")}`;
 
           // t() buscará automáticamente en tu es.json o en.json
-          const label = t(`breadcrumbs.${value}`, { defaultValue: value });
+          const label = t(`navigation.${value}`, { defaultValue: value });
 
           return (
             <li key={to} className="breadcrumbs__item">
