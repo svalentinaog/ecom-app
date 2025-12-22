@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import BaseLayout from "@/layouts/BaseLayout";
 
 import HomePage from "@/pages/HomePage";
@@ -15,14 +15,17 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<BaseLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/product/:id" element={<ProductDetailPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/cart" element={<CartPage />} />
+        {/* Redirección automática de "/" a "/es" (o tu idioma por defecto) */}
+        <Route path="/" element={<Navigate to="/" replace />} />
+
+        <Route path="/:lang" element={<BaseLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="shop" element={<ShopPage />} />
+          <Route path="product/:id" element={<ProductDetailPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

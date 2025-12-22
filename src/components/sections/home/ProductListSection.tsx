@@ -3,8 +3,8 @@ import axios from "axios";
 
 import type { Product } from "@/types/Product";
 
-import ProductFilter from "@/components/molecules/home/ProductFilter";
-import ProductCard from "@/components/molecules/home/ProductCard";
+import ProductFilter from "@/components/molecules/ProductFilter";
+import ProductCard from "@/components/molecules/ProductCard";
 import Container from "@/layouts/Container";
 
 export default function ProductListSection() {

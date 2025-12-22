@@ -1,33 +1,78 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState, useMemo } from "react";
+import {
+  Link,
+  NavLink,
+  useParams,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   cart,
   logoDark,
   phoneTop,
   userAccess,
   emailTop,
-  languageTop,
+  langEN,
+  langES,
   hamburger,
 } from "@/assets";
-import SearchBar from "@/components/molecules/common/SearchBar";
+import SearchBar from "@/components/molecules/SearchBar";
 
 export default function Header() {
-  const [search, setSearch] = useState<string>("");
+  const { lang } = useParams();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [search, setSearch] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleSearch = (value: string) => {
-    setSearch(value);
+  // 1. Centralizamos los items de navegación
+  const navItems = useMemo(
+    () => [
+      { name: t("navigation.home"), path: "/", end: true },
+      { name: t("navigation.shop"), path: "/shop", end: false },
+      { name: t("navigation.contact"), path: "/contact", end: false },
+      { name: t("navigation.access"), path: "/login", end: false },
+    ],
+    [t]
+  );
+
+  // 2. Helper para rutas localizadas
+  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
+
+  // 3. Lógica de cambio de idioma sincronizada con la URL
+  const toggleLanguage = () => {
+    const nextLang = lang === "es" ? "en" : "es";
+    i18n.changeLanguage(nextLang);
+    navigate(location.pathname.replace(`/${lang}`, `/${nextLang}`));
   };
 
+  // Sincronización al recargar la página
+  useEffect(() => {
+    if (lang && i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [lang, i18n]);
+
+  // Helper para clases activas
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? "active" : "";
+
   return (
-    <header>
+    <header className="header">
       <div className="header-content">
         {/* Top Bar */}
         <div className="top-bar">
           <div className="top-bar-left">
-            <div className="top-bar-item">
-              <img src={languageTop} alt="Language" />
-              <p>English</p>
+            <div
+              className="top-bar-item"
+              onClick={toggleLanguage}
+              style={{ cursor: "pointer" }}
+            >
+              <img src={lang === "es" ? langEN : langES} alt="Language" />
+              <p>{lang === "es" ? "English" : "Español"}</p>
             </div>
             <div className="top-bar-item">
               <img src={phoneTop} alt="Phone" />
@@ -39,14 +84,10 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Acceso */}
           <div className="top-bar-item">
             <img src={userAccess} alt="userAccess" />
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Acceso
+            <NavLink to={getPath("/login")} className={navLinkClass}>
+              {t("header.access")}
             </NavLink>
           </div>
         </div>
@@ -55,42 +96,30 @@ export default function Header() {
 
         {/* Navbar */}
         <nav className="navbar">
-          <Link to="/">
+          <Link to={getPath("/")}>
             <img src={logoDark} alt="LOGO" className="logo" />
           </Link>
 
           <div className="navbar-content">
-            {/* Menú principal oculto en móvil */}
             <div className="menu-items">
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Inicio
-              </NavLink>
-              <NavLink
-                to="/shop"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Tienda
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Contacto
-              </NavLink>
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={getPath(item.path)}
+                  end={item.end}
+                  className={navLinkClass}
+                >
+                  {item.name}
+                </NavLink>
+              ))}
             </div>
 
-            {/* SearchBar */}
-            <SearchBar value={search} onChange={handleSearch} />
+            <SearchBar value={search} onChange={setSearch} />
 
-            {/* Carrito */}
-            <Link to="/cart">
+            <Link to={getPath("/cart")}>
               <img src={cart} alt="Cart" />
             </Link>
 
-            {/* Hamburguesa para móvil */}
             <img
               src={hamburger}
               alt="Menu"
@@ -100,28 +129,21 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* Menú móvil desplegable */}
+        {/* Menú móvil */}
         {menuOpen && (
           <div className="mobile-menu">
-            <SearchBar value={search} onChange={handleSearch} />{" "}
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Inicio
-            </NavLink>
-            <NavLink
-              to="/shop"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Tienda
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Contacto
-            </NavLink>
+            <SearchBar value={search} onChange={setSearch} />
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={getPath(item.path)}
+                end={item.end}
+                className={navLinkClass}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.name}
+              </NavLink>
+            ))}
           </div>
         )}
       </div>

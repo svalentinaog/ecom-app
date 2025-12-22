@@ -26,7 +26,8 @@ import location from "./icons/location.svg";
 
 import phoneTop from "./icons/phone-top-bar.svg";
 import emailTop from "./icons/email-top-bar.svg";
-import languageTop from "./icons/language-top-bar.svg";
+import langEN from "./icons/lang-EN.svg";
+import langES from "./icons/lang-ES.svg";
 
 // Feature Icons
 import shipping from "./icons/shipping.svg";
@@ -61,7 +62,8 @@ export {
   location,
   phoneTop,
   emailTop,
-  languageTop,
+  langEN,
+  langES,
   userAccess,
   shipping,
   packaging,

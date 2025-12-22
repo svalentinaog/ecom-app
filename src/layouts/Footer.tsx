@@ -1,5 +1,7 @@
+import { useMemo } from "react";
+import { Link, NavLink, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Container from "@/layouts/Container";
-import { Link, NavLink } from "react-router-dom";
 import {
   logoLight,
   facebook,
@@ -18,113 +20,128 @@ import {
 } from "@/assets";
 
 export default function Footer() {
+  const { lang } = useParams();
+  const { t } = useTranslation();
+
+  // Helper para rutas localizadas
+  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
+
+  // 1. Items del menú (Consistentes con el Header)
+  const menuItems = useMemo(
+    () => [
+      { name: t("navigation.home"), path: "/", end: true },
+      { name: t("navigation.shop"), path: "/shop", end: false },
+      { name: t("navigation.contact"), path: "/contact", end: false },
+      { name: t("navigation.access"), path: "/login", end: false },
+    ],
+    [t]
+  );
+
+  // 2. Redes Sociales
+  const socialLinks = [
+    { name: "Facebook", icon: facebook, url: "#" },
+    { name: "Twitter", icon: twitter, url: "#" },
+    { name: "Google", icon: google, url: "#" },
+    { name: "Youtube", icon: youtube, url: "#" },
+    { name: "Instagram", icon: instagram, url: "#" },
+  ];
+
+  // 3. Métodos de Pago
+  const paymentMethods = [
+    { name: "visa", icon: visa },
+    { name: "mastercard", icon: mastercard },
+    { name: "american-express", icon: americanExpress },
+    { name: "paypal", icon: paypal },
+    { name: "discover", icon: discover },
+  ];
+
   return (
-    <footer>
+    <footer className="footer">
       <Container>
         <div className="footer-content">
           <div className="footer-columns">
-            {/* Column 1 */}
+            {/* Columna 1: Logo y RRSS */}
             <div className="footer-column">
-              <Link to="/">
-                <img src={logoLight} alt="LOGO" />
+              <Link to={getPath("/")}>
+                <img src={logoLight} alt="LOGO" className="footer-logo" />
               </Link>
-              <p>[Breve descripción de la empresa o tienda]</p>
+              <p>{t("footer.description")}</p>
               <div className="footer-social">
-                <a href="#">
-                  <img src={facebook} alt="Facebook" />
-                </a>
-                <a href="#">
-                  <img src={twitter} alt="Twitter" />
-                </a>
-                <a href="#">
-                  <img src={google} alt="Google+" />
-                </a>
-                <a href="#">
-                  <img src={youtube} alt="Youtube" />
-                </a>
-                <a href="#">
-                  <img src={instagram} alt="Instagram" />
-                </a>
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={social.icon} alt={social.name} />
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Column 2 */}
+            {/* Columna 2: Menú Dinámico */}
             <div className="footer-column">
-              <h3>Menu</h3>
+              <h3>{t("footer.titles.menu")}</h3>
               <div className="footer-items">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Inicio
-                </NavLink>
-                <NavLink
-                  to="/shop"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Tienda
-                </NavLink>
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Contacto
-                </NavLink>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Acceso
-                </NavLink>
+                {menuItems.map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={getPath(item.path)}
+                    end={item.end}
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
               </div>
             </div>
 
-            {/* Column 3 */}
+            {/* Columna 3: Contacto */}
             <div className="footer-column">
-              <h3>Informacion de contacto</h3>
+              <h3>{t("footer.titles.contact")}</h3>
               <div className="footer-items">
                 <div className="footer-item">
                   <img src={phone} alt="phone" />
-                  <a href="#">+57 312 456 7890</a>
+                  <a href="tel:+573124567890">+57 312 456 7890</a>
                 </div>
                 <div className="footer-item">
                   <img src={email} alt="email" />
-                  <a href="#">info@ecom.com</a>
+                  <a href="mailto:info@ecom.com">info@ecom.com</a>
                 </div>
                 <div className="footer-item">
                   <img src={location} alt="location" />
-                  <a href="#">Calle 123, Edificio 456</a>
+                  <a href="#">{t("footer.address")}</a>
                 </div>
               </div>
             </div>
-            {/* Column 4 */}
+
+            {/* Columna 4: Legal */}
             <div className="footer-column">
-              <h3>Legal</h3>
+              <h3>{t("footer.titles.legal")}</h3>
               <div className="footer-items">
-                <p>
-                  <a href="#">Aviso legal</a>
-                </p>
-                <p>
-                  <a href="#">Politica de privacidad</a>
-                </p>
-                <p>
-                  <a href="#">Política de envíos y devoluciones</a>
-                </p>
+                <Link to={getPath("/legal")}>{t("footer.legal.terms")}</Link>
+                <Link to={getPath("/privacy")}>
+                  {t("footer.legal.privacy")}
+                </Link>
+                <Link to={getPath("/shipping")}>
+                  {t("footer.legal.shipping")}
+                </Link>
               </div>
             </div>
           </div>
+
           <hr />
+
+          {/* Bottom Bar: Copyright y Pagos */}
           <div className="footer-columns">
             <p className="footer-copyright">
-              © 2025 Aprendiz ADSO Sandra Valentina Ortiz Gonzalez Ficha
-              (3118288)
+              © {new Date().getFullYear()} {t("footer.copyright")}
             </p>
             <div className="payment-methods">
-              <img src={visa} alt="visa" />
-              <img src={mastercard} alt="mastercard" />
-              <img src={americanExpress} alt="american-express" />
-              <img src={paypal} alt="paypal" />
-              <img src={discover} alt="discover" />
+              {paymentMethods.map((method) => (
+                <img key={method.name} src={method.icon} alt={method.name} />
+              ))}
             </div>
           </div>
         </div>

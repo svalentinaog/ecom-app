@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "home": "Home",
+    "shop": "Shop",
+    "contact": "Contact",
+    "access": "Access"
+  },
+  "header": {
+    "spanish": "Spanish",
+    "access": "Access",
+    "search": "Search products..."
+  },
+  "footer": {
+    "description": "Your trusted store for tech products with nationwide shipping.",
+    "titles": {
+      "menu": "Menu",
+      "contact": "Contact Information",
+      "legal": "Legal"
+    },
+    "address": "123 Street, Building 456, Jamundí",
+    "legal": {
+      "terms": "Legal Notice",
+      "privacy": "Privacy Policy",
+      "shipping": "Shipping and Returns"
+    },
+    "copyright": "ADSO Apprentice Sandra Valentina Ortiz Gonzalez | File № 3118288"
+  }
+}

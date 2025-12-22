@@ -1,5 +1,6 @@
 import type { ChangeEvent } from "react";
 import { search } from "@/assets";
+import { useTranslation } from "react-i18next";
 
 type SearchBarProps = {
   value: string;
@@ -7,6 +8,7 @@ type SearchBarProps = {
 };
 
 export default function SearchBar({ value, onChange }: SearchBarProps) {
+  const { t } = useTranslation();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
@@ -16,7 +18,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
       <img src={search} alt="Buscar" className="searchbar__icon" />
       <input
         type="text"
-        placeholder="Buscador de productos..."
+        placeholder={t("header.search")}
         value={value}
         onChange={handleChange}
       />
