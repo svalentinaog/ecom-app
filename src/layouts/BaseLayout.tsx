@@ -16,7 +16,19 @@ export default function BaseLayout() {
     }
   }, [lang, i18n]);
 
-  const shouldRenderCTA = !/\/contact$/.test(location.pathname);
+  // 1. Definimos las rutas que no llevan CTA de forma clara
+  const CTA_EXCLUDE_PREFIXES = ["/contact", "/legal"];
+
+  // 2. Normalizamos la ruta eliminando el idioma (ej: /es/legal -> /legal)
+  const pathWithoutLang =
+    lang && location.pathname.startsWith(`/${lang}`)
+      ? location.pathname.slice(`/${lang}`.length) || "/"
+      : location.pathname;
+
+  // 3. Verificamos si la ruta actual empieza con alguno de nuestros prefijos
+  const shouldRenderCTA = !CTA_EXCLUDE_PREFIXES.some((prefix) =>
+    pathWithoutLang.startsWith(prefix)
+  );
 
   return (
     <div className="layout-wrapper">

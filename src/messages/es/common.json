@@ -3,7 +3,10 @@
     "home": "Inicio",
     "shop": "Tienda",
     "contact": "Contacto",
-    "access": "Acceso"
+    "access": "Acceso",
+    "legalNotice": "Aviso legal",
+    "privacyPolicy": "Política de privacidad",
+    "shippingPolicy": "Política de envíos y devoluciones"
   },
   "header": {
     "english": "Inglés",

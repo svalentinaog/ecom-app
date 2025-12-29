@@ -36,6 +36,26 @@ export default function Footer() {
     ],
     [t]
   );
+  const menuItemsLegalDocs = useMemo(
+    () => [
+      {
+        name: t("navigation.legalNotice"),
+        path: "/legal/legal-notice",
+        end: false,
+      },
+      {
+        name: t("navigation.privacyPolicy"),
+        path: "/legal/privacy-policy",
+        end: false,
+      },
+      {
+        name: t("navigation.shippingPolicy"),
+        path: "/legal/shipping-and-returns-policy",
+        end: false,
+      },
+    ],
+    [t]
+  );
 
   // 2. Redes Sociales
   const socialLinks = [
@@ -116,17 +136,20 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Columna 4: Legal */}
+            {/* Columna 4: Legal (Unificando rutas) */}
             <div className="footer-column">
               <h3>{t("footer.titles.legal")}</h3>
               <div className="footer-items">
-                <Link to={getPath("/legal")}>{t("footer.legal.terms")}</Link>
-                <Link to={getPath("/privacy")}>
-                  {t("footer.legal.privacy")}
-                </Link>
-                <Link to={getPath("/shipping")}>
-                  {t("footer.legal.shipping")}
-                </Link>
+                {menuItemsLegalDocs.map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={getPath(item.path)}
+                    end={item.end}
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
               </div>
             </div>
           </div>

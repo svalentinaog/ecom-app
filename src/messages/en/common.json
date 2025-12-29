@@ -3,7 +3,10 @@
     "home": "Home",
     "shop": "Shop",
     "contact": "Contact",
-    "access": "Access"
+    "access": "Access",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "shippingPolicy": "Shipping and Returns"
   },
   "header": {
     "spanish": "Spanish",
