@@ -21,7 +21,7 @@ import {
 
 export default function Footer() {
   const { lang } = useParams();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   // Helper para rutas localizadas
   const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;

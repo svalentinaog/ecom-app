@@ -1,15 +1,22 @@
+// Abstracts
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
 @import "./base/reset";
 @import "./base/typography";
+
+// Global Components 
 @import "./components/buttons";
 @import "./components/coming-soon";
-@import "./components/breadcrumbs";
 @import "./components/searchbar";
+
+// Layout
 @import "./layout/container";
 @import "./layout/layout";
 @import "./layout/header";
-@import "./layout/CTA";
 @import "./layout/footer";
+@import "./layout/CTA";
+
+// Pages
 @import "./pages/home";
+@import "./pages/shop";
 @import "./pages/contact";

@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Contacto",
+    "subtitle": "Área para promociones principales",
+    "description": "Contáctanos para cualquier pregunta o problema"
+  },
+  "formSection": {
+    "title": "Formulario de Contacto",
+    "description": "Contáctanos para cualquier pregunta o problema"
+  },
+  "form": {
+    "placeholder": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "message": "Mensaje"
+    },
+    "terms_and_conditions": "He leído la Política de Privacidad y acepto el tratamiento de mis datos para el trámite de la solicitud realizada.",
+    "submit": "Enviar"
+  }
+}

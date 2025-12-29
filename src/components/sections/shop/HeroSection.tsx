@@ -1,6 +1,6 @@
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
 import Container from "@/layouts/Container";
-import ComingSoon from "@/components/molecules/ComingSoon";
+// import ComingSoon from "@/components/molecul es/ComingSoon";
 
 export default function HeroSection() {
   return (
@@ -8,7 +8,7 @@ export default function HeroSection() {
       <Container>
         <Breadcrumbs />
       </Container>
-      <ComingSoon title="Próximamente tienda" />
+      {/* <ComingSoon title="Próximamente tienda" /> */}
     </section>
   );
 }

@@ -1,15 +1,18 @@
 import Container from "@/layouts/Container";
 import { imageSection } from "@/assets";
 
+import { useTranslation } from "react-i18next";
+
 export default function HeroSection() {
+  const { t } = useTranslation("contact");
   return (
     <section className="bg-section-home">
       <Container>
         <div className="hero-section-home">
           <div className="text-content-home">
-            <span>[Área para promociones principales]</span>
-            <h1>[Contact]</h1>
-            <p>[Texto secundario/Descripción de sección]</p>
+            <span>{t("hero.subtitle")}</span>
+            <h1>{t("hero.title")}</h1>
+            <p>{t("hero.description")}</p>
           </div>
           <div className="container-image-home">
             <img

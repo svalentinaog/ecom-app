@@ -29,6 +29,7 @@ footer {
 
       a {
         text-decoration: none;
+
         &.active {
           color: $primary;
         }
@@ -37,13 +38,13 @@ footer {
       .footer-column {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 16px;
 
         .footer-items {
           display: flex;
           flex-direction: column;
           gap: 8px;
-        
+
           .footer-item {
             display: flex;
             align-items: center;

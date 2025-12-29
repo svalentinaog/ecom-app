@@ -1,25 +1,28 @@
 import Container from "@/layouts/Container";
+import Button from "@/components/atoms/Button";
 import { imageSection } from "@/assets";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
 export default function CallToAction() {
+  const { t } = useTranslation("common");
+  const { lang } = useParams();
+  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
+
   return (
     <section className="bg-section-CTA">
       <Container>
         <div className="hero-section-CTA">
           <div className="container-image-CTA">
-            <img
-              className="image-CTA"
-              src={imageSection}
-              alt="Imagen destacada"
-            />
+            <img className="image-CTA" src={imageSection} alt={t("CTA.alt")} />
           </div>
           <div className="text-content-CTA">
-            <h2>[Texto principal banner o promoción]</h2>
-            <p>[Breve descripción]</p>
+            <h2>{t("CTA.title")}</h2>
+            <p>{t("CTA.description")}</p>
             <div>
-              <button className="btn btn--primary">
-                <a href="/contact">Contacto</a>
-              </button>
+              <Button variant="primary">
+                <a href={getPath("/contact")}>{t("CTA.btn")}</a>
+              </Button>
             </div>
           </div>
         </div>

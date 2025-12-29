@@ -2,12 +2,14 @@ type Props = {
   categories: string[];
   selected: string;
   onSelect: (cat: string) => void;
+  allLabel?: string;
 };
 
 export default function ProductFilter({
   categories,
   selected,
   onSelect,
+  allLabel = "Todas",
 }: Props) {
   return (
     <div className="filter">
@@ -15,7 +17,7 @@ export default function ProductFilter({
         className={selected === "all" ? "tab-active" : ""}
         onClick={() => onSelect("all")}
       >
-        Todas
+        {allLabel}
       </h4>
 
       {categories.map((cat) => (

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import {
   Link,
   NavLink,
@@ -21,20 +21,19 @@ import SearchBar from "@/components/molecules/SearchBar";
 
 export default function Header() {
   const { lang } = useParams();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation("common");
   const navigate = useNavigate();
   const location = useLocation();
 
   const [search, setSearch] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // 1. Centralizamos los items de navegación
+  // 1. Centralizamos los items de navegación (Se traducen solos vía 't')
   const navItems = useMemo(
     () => [
       { name: t("navigation.home"), path: "/", end: true },
       { name: t("navigation.shop"), path: "/shop", end: false },
       { name: t("navigation.contact"), path: "/contact", end: false },
-      { name: t("navigation.access"), path: "/login", end: false },
     ],
     [t]
   );
@@ -42,19 +41,13 @@ export default function Header() {
   // 2. Helper para rutas localizadas
   const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
 
-  // 3. Lógica de cambio de idioma sincronizada con la URL
+  // 3. Lógica de cambio de idioma simplificada
   const toggleLanguage = () => {
     const nextLang = lang === "es" ? "en" : "es";
+    // Cambiamos el idioma en la librería e inmediatamente navegamos a la nueva URL
     i18n.changeLanguage(nextLang);
     navigate(location.pathname.replace(`/${lang}`, `/${nextLang}`));
   };
-
-  // Sincronización al recargar la página
-  useEffect(() => {
-    if (lang && i18n.language !== lang) {
-      i18n.changeLanguage(lang);
-    }
-  }, [lang, i18n]);
 
   // Helper para clases activas
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>

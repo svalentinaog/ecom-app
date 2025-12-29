@@ -8,7 +8,7 @@ type SearchBarProps = {
 };
 
 export default function SearchBar({ value, onChange }: SearchBarProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };

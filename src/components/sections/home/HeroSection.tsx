@@ -1,19 +1,27 @@
 import Container from "@/layouts/Container";
 import { imageSection } from "@/assets";
 
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import Button from "@/components/atoms/Button";
+
 export default function HeroSection() {
+  const { t } = useTranslation("home");
+  const { lang } = useParams();
+  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
+
   return (
     <section className="bg-section-home">
       <Container>
         <div className="hero-section-home">
           <div className="text-content-home">
-            <span>[Área para promociones principales]</span>
-            <h1>[Mensaje llamativo o slogan de campaña]</h1>
-            <p>[Espacio para una breve descripción]</p>
+            <span>{t("hero.badge")}</span>
+            <h1>{t("hero.title")}</h1>
+            <p>{t("hero.description")}</p>
             <div>
-              <button className="btn btn--white">
-                <a href="/shop">Tienda</a>
-              </button>
+              <Button variant="white">
+                <a href={getPath("/shop")}>{t("hero.cta")}</a>
+              </Button>
             </div>
           </div>
           <div className="container-image-home">

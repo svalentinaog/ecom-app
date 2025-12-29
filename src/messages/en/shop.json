@@ -1,0 +1,13 @@
+{
+  "filters": {
+    "title": "Filters",
+    "categories": "Categories",
+    "prices": "Prices",
+    "all": "All categories",
+    "apply": "Apply filters",
+    "clear": "Clear"
+  },
+  "product": {
+    "add_to_cart": "Add to cart"
+  }
+}

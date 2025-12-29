@@ -29,6 +29,12 @@ import emailTop from "./icons/email-top-bar.svg";
 import langEN from "./icons/lang-EN.svg";
 import langES from "./icons/lang-ES.svg";
 
+// Contact Page
+
+import addressContactPage from "./icons/_adress.svg";
+import phoneContactPage from "./icons/_phone.svg";
+import emailContactPage from "./icons/_email.svg";
+
 // Feature Icons
 import shipping from "./icons/shipping.svg";
 import packaging from "./icons/packaging.svg";
@@ -72,4 +78,7 @@ export {
   search,
   hamburger,
   comingSoon,
+  addressContactPage,
+  phoneContactPage,
+  emailContactPage,
 };

@@ -24,5 +24,19 @@
       "shipping": "Política de envíos y devoluciones"
     },
     "copyright": "Aprendiz ADSO Sandra Valentina Ortiz Gonzalez | Ficha № 3118288"
+  },
+  "CTA": {
+    "title": "[Texto principal banner o promoción]",
+    "description": "[Breve descripción]",
+    "btn": "Contacto",
+    "alt": "Imagen destacada"
+  },
+  "comingSoon": {
+    "title": "Próximamente",
+    "description": "Estamos trabajando para habilitar esta sección.",
+    "cart": "Próximamente carrito",
+    "productDetail": "Próximamente detalle de producto",
+    "auth": "Próximamente autenticación",
+    "shop": "Próximamente tienda"
   }
 }

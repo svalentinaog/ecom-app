@@ -24,5 +24,19 @@
       "shipping": "Shipping and Returns"
     },
     "copyright": "ADSO Apprentice Sandra Valentina Ortiz Gonzalez | File № 3118288"
+  },
+  "CTA": {
+    "title": "[Main banner or promotion text]",
+    "description": "[Brief description]",
+    "btn": "Contact",
+    "alt": "Featured image"
+  },
+  "comingSoon": {
+    "title": "Coming Soon",
+    "description": "We are working on enabling this section.",
+    "cart": "Cart coming soon",
+    "productDetail": "Product details coming soon",
+    "auth": "Authentication coming soon",
+    "shop": "Shop coming soon"
   }
 }

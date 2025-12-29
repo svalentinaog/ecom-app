@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Breadcrumbs() {
   const { lang } = useParams(); // Obtenemos "es" o "en" de la URL
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const location = useLocation();
 
   const pathnames = location.pathname.split("/").filter((x) => x && x !== lang);

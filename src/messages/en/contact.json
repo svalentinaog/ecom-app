@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Contact",
+    "subtitle": "Main promotion area",
+    "description": "Contact us for any questions or issues"
+  },
+  "formSection": {
+    "title": "Contact Form",
+    "description": "Contact us for any questions or issues"
+  },
+  "form": {
+    "placeholder": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message"
+    },
+    "terms_and_conditions": "I have read the Privacy Policy and accept the processing of my data for the request made.",
+    "submit": "Submit"
+  }
+}
