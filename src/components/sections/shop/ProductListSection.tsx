@@ -1,60 +1,44 @@
-import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
-
-import type { Product } from "@/types/Product";
-
-import ProductCard from "@/components/molecules/ProductCard";
 import { useTranslation } from "react-i18next";
+import ProductCard from "@/components/molecules/ProductCard";
+import Container from "@/layouts/Container";
+import FilterSidebar from "@/components/molecules/shop/FilterSidebar";
+import { useProductFilter } from "@/hooks/useProductFilter";
 
 export default function ProductListSection() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filter, setFilter] = useState<string>("all");
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const { i18n } = useTranslation("shop");
+  const { t, i18n } = useTranslation("shop");
   const currentLang = (i18n.language as "es" | "en") || "es";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get<Product[]>("/data.json");
-        setProducts(res.data);
-      } catch (e) {
-        setError("error");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const categories = useMemo(
-    () => Array.from(new Set(products.map((p) => p.category[currentLang]))),
-    [products, currentLang]
-  );
-
-  const filteredProducts =
-    filter === "all"
-      ? products
-      : products.filter((p) => p.category[currentLang] === filter);
+  const { filteredProducts, categoryGroups, filters, setFilters, priceLimits } =
+    useProductFilter(currentLang);
 
   return (
-    <div className="products">
-      <div className="current-category">
-        <h3>{filter === "all" ? "" : filter}</h3>
-      </div>
+    <Container>
+      <div className="shop-content">
+        <FilterSidebar
+          categories={categoryGroups}
+          selectedCat={filters.category}
+          onSelectCat={(cat) => setFilters({ ...filters, category: cat })}
+          priceRange={filters.priceRange}
+          onPriceChange={(range) =>
+            setFilters({ ...filters, priceRange: range })
+          }
+          priceMin={priceLimits.min}
+          priceMax={priceLimits.max}
+        />
 
-      <div className="product-list-shop">
-        {loading && <p>...</p>}
-        {error && <p>...</p>}
-        {!loading &&
-          !error &&
-          filteredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
+        <div className="products-shop">
+          <div className="current-category">
+            <h3>
+              {filters.category === "all" ? t("filters.all") : filters.category}
+            </h3>
+          </div>
+          <div className="product-list-shop">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </div>
       </div>
-
-      <div className="product-cta">Paginado</div>
-    </div>
+    </Container>
   );
 }

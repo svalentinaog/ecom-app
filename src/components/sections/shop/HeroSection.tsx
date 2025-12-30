@@ -1,14 +1,11 @@
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
-import Container from "@/layouts/Container";
-// import ComingSoon from "@/components/molecul es/ComingSoon";
 
 export default function HeroSection() {
   return (
     <section className="bg-section-shop">
-      <Container>
+      <div className="container-breadcrumbs">
         <Breadcrumbs />
-      </Container>
-      {/* <ComingSoon title="Próximamente tienda" /> */}
+      </div>
     </section>
   );
 }

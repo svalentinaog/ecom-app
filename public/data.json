@@ -1,114 +1,130 @@
 [
   {
-    "id": "p1",
+    "id": 1,
     "name": {
-      "es": "Producto 1",
-      "en": "Product 1"
+      "es": "Arroz Integral Premium 1kg",
+      "en": "Premium Brown Rice 1kg"
     },
-    "price": 4999,
-    "category": {
-      "es": "Categoría 1",
-      "en": "Category 1"
-    },
+    "price": 3500,
+    "oldPrice": 4200,
+    "discount": 16,
+    "category": { "es": "Granos", "en": "Grains" },
+    "subCategory": { "es": "Arroz", "en": "Rice" },
     "image": "/images/product-image.jpg",
-    "points": 4.5
+    "rating": 4.8
   },
   {
-    "id": "p2",
+    "id": 2,
     "name": {
-      "es": "Producto 2",
-      "en": "Product 2"
+      "es": "Arroz Blanco Parbolizado 1kg",
+      "en": "Parboiled White Rice 1kg"
     },
-    "price": 5999,
-    "category": {
-      "es": "Categoría 2",
-      "en": "Category 2"
-    },
+    "price": 2800,
+    "oldPrice": 2800,
+    "discount": 0,
+    "category": { "es": "Granos", "en": "Grains" },
+    "subCategory": { "es": "Arroz", "en": "Rice" },
     "image": "/images/product-image.jpg",
-    "points": 4.2
+    "rating": 4.5
   },
   {
-    "id": "p3",
+    "id": 3,
     "name": {
-      "es": "Producto 3",
-      "en": "Product 3"
+      "es": "Frijol Cargamanto Rojo 500g",
+      "en": "Red Kidney Beans 500g"
     },
-    "price": 3999,
-    "category": {
-      "es": "Categoría 2",
-      "en": "Category 2"
-    },
+    "price": 4500,
+    "oldPrice": 5000,
+    "discount": 10,
+    "category": { "es": "Granos", "en": "Grains" },
+    "subCategory": { "es": "Frijol", "en": "Beans" },
     "image": "/images/product-image.jpg",
-    "points": 4.8
+    "rating": 4.7
   },
   {
-    "id": "p4",
-    "name": {
-      "es": "Producto 4",
-      "en": "Product 4"
-    },
-    "price": 7999,
-    "category": {
-      "es": "Categoría 2",
-      "en": "Category 2"
-    },
+    "id": 4,
+    "name": { "es": "Frijol Negro Bolón 500g", "en": "Black Beans 500g" },
+    "price": 3800,
+    "oldPrice": 3800,
+    "discount": 0,
+    "category": { "es": "Granos", "en": "Grains" },
+    "subCategory": { "es": "Frijol", "en": "Beans" },
     "image": "/images/product-image.jpg",
-    "points": 4.6
+    "rating": 4.3
   },
   {
-    "id": "p5",
+    "id": 5,
     "name": {
-      "es": "Producto 5",
-      "en": "Product 5"
+      "es": "Lenteja Nacional Pardina 500g",
+      "en": "National Lentils 500g"
     },
-    "price": 6999,
-    "category": {
-      "es": "Categoría 1",
-      "en": "Category 1"
-    },
+    "price": 3200,
+    "oldPrice": 3200,
+    "discount": 0,
+    "category": { "es": "Granos", "en": "Grains" },
+    "subCategory": { "es": "Lentejas", "en": "Lentils" },
     "image": "/images/product-image.jpg",
-    "points": 4.3
+    "rating": 4.6
   },
   {
-    "id": "p6",
-    "name": {
-      "es": "Producto 6",
-      "en": "Product 6"
-    },
-    "price": 5499,
-    "category": {
-      "es": "Categoría 2",
-      "en": "Category 2"
-    },
+    "id": 6,
+    "name": { "es": "Garbanzo Extra 500g", "en": "Extra Chickpeas 500g" },
+    "price": 4100,
+    "oldPrice": 4800,
+    "discount": 14,
+    "category": { "es": "Granos", "en": "Grains" },
+    "subCategory": { "es": "Garbanzos", "en": "Chickpeas" },
     "image": "/images/product-image.jpg",
-    "points": 4.7
+    "rating": 4.9
   },
   {
-    "id": "p7",
+    "id": 7,
     "name": {
-      "es": "Producto 7",
-      "en": "Product 7"
+      "es": "Aceite de Oliva Virgen 500ml",
+      "en": "Virgin Olive Oil 500ml"
     },
-    "price": 4599,
-    "category": {
-      "es": "Categoría 1",
-      "en": "Category 1"
-    },
+    "price": 25000,
+    "oldPrice": 28500,
+    "discount": 12,
+    "category": { "es": "Despensa", "en": "Pantry" },
+    "subCategory": { "es": "Aceites", "en": "Oils" },
     "image": "/images/product-image.jpg",
-    "points": 4.1
+    "rating": 4.9
   },
   {
-    "id": "p8",
-    "name": {
-      "es": "Producto 8",
-      "en": "Product 8"
-    },
-    "price": 8999,
-    "category": {
-      "es": "Categoría 2",
-      "en": "Category 2"
-    },
+    "id": 8,
+    "name": { "es": "Aceite de Girasol 1L", "en": "Sunflower Oil 1L" },
+    "price": 12000,
+    "oldPrice": 12000,
+    "discount": 0,
+    "category": { "es": "Despensa", "en": "Pantry" },
+    "subCategory": { "es": "Aceites", "en": "Oils" },
     "image": "/images/product-image.jpg",
-    "points": 4.9
+    "rating": 4.2
+  },
+  {
+    "id": 9,
+    "name": { "es": "Pasta Espagueti 500g", "en": "Spaghetti Pasta 500g" },
+    "price": 2400,
+    "oldPrice": 3000,
+    "discount": 20,
+    "category": { "es": "Despensa", "en": "Pantry" },
+    "subCategory": { "es": "Pastas", "en": "Pasta" },
+    "image": "/images/product-image.jpg",
+    "rating": 4.7
+  },
+  {
+    "id": 10,
+    "name": {
+      "es": "Pasta Tornillos Integrales 500g",
+      "en": "Whole Wheat Fusilli 500g"
+    },
+    "price": 3100,
+    "oldPrice": 3100,
+    "discount": 0,
+    "category": { "es": "Despensa", "en": "Pantry" },
+    "subCategory": { "es": "Pastas", "en": "Pasta" },
+    "image": "/images/product-image.jpg",
+    "rating": 4.4
   }
 ]

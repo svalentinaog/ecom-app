@@ -1,14 +1,16 @@
+export type TranslationMap = {
+  es: string;
+  en: string;
+};
+
 export type Product = {
-  id: string;
-  name: {
-    es: string;
-    en: string;
-  };
+  id: number;
+  name: TranslationMap;
   price: number;
-  category: {
-    es: string;
-    en: string;
-  };
+  oldPrice: number;
+  discount: number;
+  category: TranslationMap;
+  subCategory: TranslationMap;
   image: string;
   points: number;
 };
