@@ -19,6 +19,7 @@ import {
   hamburger,
 } from "@/assets";
 import SearchBar from "@/components/molecules/common/SearchBar";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Header() {
   const { lang } = useParams();
@@ -26,6 +27,8 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
 
   const initialSearch = searchParams.get("q") || "";
   const [search, setSearch] = useState(initialSearch);
@@ -152,8 +155,11 @@ export default function Header() {
 
             <SearchBar value={search} onChange={handleSearchChange} onSubmit={handleSearchSubmit} />
 
-            <Link to={getPath("/cart")}>
+            <Link to={getPath("/cart")} className="cart-link">
               <img src={cart} alt="Cart" />
+              {cartCount > 0 && (
+                <span className="cart-count">{cartCount}</span>
+              )}
             </Link>
 
             <img

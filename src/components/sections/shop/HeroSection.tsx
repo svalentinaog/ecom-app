@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/components/molecules/shop/Breadcrumbs";
+import Breadcrumbs from "@/components/molecules/common/Breadcrumbs";
 
 export default function HeroSection() {
   return (

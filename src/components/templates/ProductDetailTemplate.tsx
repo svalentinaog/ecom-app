@@ -13,7 +13,7 @@ export default function ProductDetailTemplate() {
 
   return (
     <>
-      <ProductCardDetail {...product} />
+      <ProductCardDetail product={product} />
       <RelatedProducts currentProduct={product} />
     </>
   );

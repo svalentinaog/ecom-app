@@ -1,9 +1,5 @@
-import HeroSection from "@/components/sections/auth/HeroSection";
+import AuthTemplate from "./AuthTemplate";
 
 export default function RegisterTemplate() {
-  return (
-    <>
-      <HeroSection />
-    </>
-  );
+  return <AuthTemplate mode="register" />;
 }

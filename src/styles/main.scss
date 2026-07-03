@@ -14,6 +14,9 @@
 @use "./components/product-gallery";
 @use "./components/quantity-selector";
 @use "./components/product-list";
+@use "./components/product-not-found";
+@use "./components/auth";
+@use "./components/cart";
 
 // Layout
 @use "./layout/container";

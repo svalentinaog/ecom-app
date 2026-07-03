@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ProductCard from "@/components/molecules/common/ProductCard";
+import ProductNotFound from "@/components/molecules/common/ProductNotFound";
 import Container from "@/layouts/Container";
 import FilterSidebar from "@/components/molecules/shop/FilterSidebar";
 import { useProductFilter } from "@/hooks/useProductFilter";
@@ -48,6 +49,10 @@ export default function ProductListSection() {
     }
 
     setSearchParams(searchParams);
+  };
+
+  const handleClearFilters = () => {
+    setSearchParams({});
   };
 
   return (
@@ -121,17 +126,15 @@ export default function ProductListSection() {
               {t("filters.categories")}
             </button>
           </div>
-          <div className="product-list-shop">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
+          {filteredProducts.length > 0 ? (
+            <div className="product-list-shop">
+              {filteredProducts.map((product) => (
                 <ProductCard key={product.id} {...product} />
-              ))
+              ))}
+            </div>
             ) : (
-              <div className="no-products">
-                {t("noProducts")}
-              </div>
+              <ProductNotFound onClearFilters={handleClearFilters} />
             )}
-          </div>
         </div>
       </div>
     </Container>

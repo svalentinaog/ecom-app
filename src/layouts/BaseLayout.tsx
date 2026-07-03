@@ -12,7 +12,7 @@ export default function BaseLayout() {
   const { lang } = useParams();
   const location = useLocation();
 
-  const CTA_EXCLUDE_PREFIXES = ["/contact", "/legal"];
+  const CTA_EXCLUDE_PREFIXES = ["/contact", "/legal", "/login", "/register", "/recover-password", "/new-password", "/cart"];
 
   const pathWithoutLang =
     lang && location.pathname.startsWith(`/${lang}`)

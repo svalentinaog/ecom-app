@@ -2,6 +2,7 @@ import type { Product } from "@/types/Product";
 import { useTranslation } from "react-i18next";
 import CommonButton from "@/components/atoms/CommonButton";
 import { useNavigate, useParams } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 
 export default function ProductCard({
   id,
@@ -19,6 +20,7 @@ export default function ProductCard({
 
   const navigate = useNavigate();
   const { lang } = useParams();
+  const { addToCart } = useCart();
 
   const handleCardClick = () => {
     navigate(`/${lang}/product/${id}`);
@@ -26,8 +28,7 @@ export default function ProductCard({
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // Pendiente lógica de añadir al carrito
-    console.log("Add to cart", id);
+    addToCart({ id, images, name, price, rating, discount, oldPrice } as Product);
   };
 
   return (

@@ -4,43 +4,43 @@ import CommonButton from "@/components/atoms/CommonButton";
 import QuantitySelector from "@/components/molecules/productDetail/QuantitySelector";
 import Container from "@/layouts/Container";
 import ProductGallery from "@/components/molecules/productDetail/ProductGallery";
+import { useState } from "react";
+import { useCart } from "@/contexts/CartContext";
 
-export default function ProductCardDetail({
-  images,
-  name,
-  price,
-  rating,
-  discount,
-  oldPrice,
-  description,
-}: Product) {
+export default function ProductCardDetail({ product }: { product: Product }) {
   const { t } = useTranslation("shop");
   const { i18n } = useTranslation();
+  const { addToCart } = useCart();
   const currentLang = (i18n.language as "es" | "en") || "es";
-  const displayName = name[currentLang];
+  const displayName = product.name[currentLang];
+  const [quantity, setQuantity] = useState(1);
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+  };
 
   return (
     <Container>
       <div className="card-product-detail">
-        <ProductGallery images={images} />
+        <ProductGallery images={product.images} />
         <div className="card-product-detail-content">
           <div className="card-product-detail-content-info">
             <h1 className="product-name">{displayName}</h1>
             <div className="product-detail-info-container">
               <div className="price-container">
-                <h2 className="price">${price}</h2>
-                <p className="old-price">${oldPrice}</p>
+                <h2 className="price">${product.price}</h2>
+                <p className="old-price">${product.oldPrice}</p>
                 <p className="discount">
-                  {discount}% {t("product.discount")}
+                  {product.discount}% {t("product.discount")}
                 </p>
               </div>
-              <p>⭐⭐⭐⭐⭐ ({rating})</p>
+              <p>⭐⭐⭐⭐⭐ ({product.rating})</p>
             </div>
-            <p>{description[currentLang]}</p>
+            <p>{product.description[currentLang]}</p>
           </div>
           <div className="card-product-detail-content-actions">
-            <QuantitySelector quantity={1} setQuantity={() => {}} />
-            <CommonButton variant="primary">
+            <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
+            <CommonButton variant="primary" onClick={handleAddToCart}>
               {t("product.add_to_cart")}
             </CommonButton>
           </div>
