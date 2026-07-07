@@ -30,7 +30,7 @@ export default function CartTable({
           <th className="cart-table__col--price">{columns.price}</th>
           <th className="cart-table__col--quantity">{columns.quantity}</th>
           <th className="cart-table__col--total">{columns.total}</th>
-          <th className="cart-table__col--remove">{columns.remove}</th>
+          <th className="cart-table__col--remove"></th>
         </tr>
       </thead>
 

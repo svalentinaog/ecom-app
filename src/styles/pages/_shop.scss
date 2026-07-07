@@ -35,6 +35,30 @@
   }
 }
 
+.clear-filters {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $title;
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+
+  svg {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+  }
+
+  &:hover {
+    color: $primary;
+    transform: scale(1.08);
+  }
+}
+
 .product-list-shop {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

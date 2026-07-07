@@ -47,9 +47,9 @@ import langEN from "./icons/lang-EN.svg";
 import langES from "./icons/lang-ES.svg";
 
 // Contact Page specific
-import addressContactPage from "./icons/_address.svg";
-import phoneContactPage from "./icons/_phone.svg";
-import emailContactPage from "./icons/_email.svg";
+import addressContactPage from "./icons/address.svg";
+import phoneContactPage from "./icons/phone-contact.svg";
+import emailContactPage from "./icons/email-contact.svg";
 
 /**
  * FEATURES & UTILITIES
@@ -59,6 +59,7 @@ import packaging from "./icons/packaging.svg";
 import support from "./icons/support.svg";
 import comingSoon from "./icons/coming-soon.png";
 import emptyCart from "./images/empty-cart.png";
+import refresh from "./icons/refresh.svg";
 
 export {
   logoLight,
@@ -94,4 +95,5 @@ export {
   phoneContactPage,
   emailContactPage,
   emptyCart,
+  refresh
 };

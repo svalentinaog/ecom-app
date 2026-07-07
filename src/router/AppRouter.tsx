@@ -12,6 +12,7 @@ import RecoverPasswordPage from "@/pages/RecoverPasswordPage";
 import NewPasswordPage from "@/pages/NewPasswordPage";
 
 import CartPage from "@/pages/CartPage";
+import MakePaymentPage from "@/pages/MakePaymentPage";
 import LegalDocumentPage from "@/pages/LegalDocumentPage";
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="recover-password" element={<RecoverPasswordPage />} />
           <Route path="new-password" element={<NewPasswordPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="make-payment" element={<MakePaymentPage />} />
           <Route path="legal/:slug" element={<LegalDocumentPage />} />
         </Route>
       </Routes>

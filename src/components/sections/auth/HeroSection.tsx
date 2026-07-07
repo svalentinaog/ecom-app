@@ -117,7 +117,7 @@ export default function HeroSection({ mode = "login" }: HeroSectionProps) {
                 >
                   {isNewPassword
                     ? t("newPassword.loginLink")
-                    :""}
+                    :t("newPassword.loginLink")}
                 </Link>
               </p>
             )}
