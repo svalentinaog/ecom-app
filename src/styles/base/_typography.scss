@@ -6,7 +6,8 @@ h1,
 h2,
 h3,
 h4,
-span {
+h5,
+span, th {
   margin: 0;
   color: $title;
 }
@@ -28,18 +29,22 @@ h4 {
   font-size: 1.25rem;
 }
 
+h5 {
+  font-size: 1rem;
+}
+
 p,
 button,
-a {
+a, td, th {
   margin: 0;
   font-size: 1rem;
 }
 
 p,
-small {
+small, td {
   color: $text-paragraph;
 }
 
-span {
+span, th {
   font-weight: 700;
 }

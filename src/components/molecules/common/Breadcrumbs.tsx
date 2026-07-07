@@ -1,12 +1,8 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { useBreadcrumbs } from "@/hooks/useBreadcrumbs";
 
 export default function Breadcrumbs() {
-  const { lang } = useParams(); // Obtenemos "es" o "en" de la URL
-  const { t } = useTranslation("common");
-  const location = useLocation();
-
-  const pathnames = location.pathname.split("/").filter((x) => x && x !== lang);
+  const { t, lang, pathnames, buildLink, getLabel } = useBreadcrumbs();
 
   return (
     <nav className="breadcrumbs">
@@ -20,11 +16,8 @@ export default function Breadcrumbs() {
 
         {pathnames.map((value, index) => {
           const last = index === pathnames.length - 1;
-          // Construimos la ruta incluyendo el idioma
-          const to = `/${lang}/${pathnames.slice(0, index + 1).join("/")}`;
-
-          // t() buscará automáticamente en tu es.json o en.json
-          const label = t(`navigation.${value}`, { defaultValue: value });
+          const to = buildLink(index);
+          const label = getLabel(value);
 
           return (
             <li key={to} className="breadcrumbs__item">

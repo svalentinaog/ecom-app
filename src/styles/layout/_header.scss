@@ -80,6 +80,24 @@ header {
         .hamburger-menu {
           display: none;
         }
+
+        .cart-link {
+          position: relative;
+
+          .cart-count {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: $primary;
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+          }
+        }
       }
 
 

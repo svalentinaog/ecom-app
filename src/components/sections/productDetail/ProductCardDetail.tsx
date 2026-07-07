@@ -1,23 +1,19 @@
 import type { Product } from "@/types/Product";
-import { useTranslation } from "react-i18next";
 import CommonButton from "@/components/atoms/CommonButton";
 import QuantitySelector from "@/components/molecules/productDetail/QuantitySelector";
 import Container from "@/layouts/Container";
 import ProductGallery from "@/components/molecules/productDetail/ProductGallery";
-import { useState } from "react";
-import { useCart } from "@/contexts/CartContext";
+import { useProductDetailCard } from "@/hooks/useProductDetailCard";
 
 export default function ProductCardDetail({ product }: { product: Product }) {
-  const { t } = useTranslation("shop");
-  const { i18n } = useTranslation();
-  const { addToCart } = useCart();
-  const currentLang = (i18n.language as "es" | "en") || "es";
-  const displayName = product.name[currentLang];
-  const [quantity, setQuantity] = useState(1);
-
-  const handleAddToCart = () => {
-    addToCart(product, quantity);
-  };
+  const {
+    t,
+    currentLang,
+    displayName,
+    quantity,
+    setQuantity,
+    handleAddToCart,
+  } = useProductDetailCard(product);
 
   return (
     <Container>

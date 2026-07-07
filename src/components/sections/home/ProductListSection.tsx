@@ -1,35 +1,14 @@
-import { useState } from "react";
-
-import type { Product } from "@/types/Product";
-import productsData from "@/data/products.json";
+import { useHomeProductList } from "@/hooks/useHomeProductList";
 
 import ProductFilter from "@/components/molecules/home/ProductFilter";
 import ProductCard from "@/components/molecules/common/ProductCard";
 import Container from "@/layouts/Container";
-import { useTranslation } from "react-i18next";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CommonButton from "@/components/atoms/CommonButton";
 
 export default function ProductListSection() {
-  const [products] = useState<Product[]>(productsData);
-  const [filter, setFilter] = useState<string>("all");
-
-  const { t, i18n } = useTranslation("home");
-  const currentLang = (i18n.language as "es" | "en") || "es";
-  const { lang } = useParams();
-  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
-
-  const categories = Array.from(
-    new Set(products.map((p) => p.category[currentLang])),
-  );
-
-  const filteredProducts =
-    filter === "all"
-      ? products
-      : products.filter((p) => p.category[currentLang] === filter);
-
-  // 2. APLICAMOS EL LÍMITE: Tomamos solo los primeros 8 del resultado filtrado
-  const displayProducts = filteredProducts.slice(0, 8);
+  const { categories, displayProducts, filter, setFilter, t, getPath } =
+  useHomeProductList();
 
   return (
     <Container>

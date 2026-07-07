@@ -1,4 +1,5 @@
 import React from "react";
+import { usePriceRange } from "@/hooks/usePriceRange";
 
 interface PriceRangeProps {
   value: [number, number];
@@ -13,12 +14,12 @@ export default function PriceRange({
   min,
   max,
 }: PriceRangeProps) {
-  const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVal = Number(e.target.value);
-    onChange([value[0], newVal]);
-  };
-
-  const progress = max > 0 ? ((value[1] - min) / (max - min)) * 100 : 0;
+  const { handleMaxChange, progress } = usePriceRange({
+    value,
+    onChange,
+    min,
+    max,
+  });
 
   return (
     <div className="price-range">

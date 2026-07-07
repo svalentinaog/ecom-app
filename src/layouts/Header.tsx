@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
-  cart,
+  shoppingCart,
   logoDark,
   phoneTop,
   userAccess,
@@ -156,7 +156,7 @@ export default function Header() {
             <SearchBar value={search} onChange={handleSearchChange} onSubmit={handleSearchSubmit} />
 
             <Link to={getPath("/cart")} className="cart-link">
-              <img src={cart} alt="Cart" />
+              <img src={shoppingCart} alt="Cart" />
               {cartCount > 0 && (
                 <span className="cart-count">{cartCount}</span>
               )}

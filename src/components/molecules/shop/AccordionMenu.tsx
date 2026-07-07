@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useAccordionMenu } from "@/hooks/useAccordionMenu";
 
 export interface CategoryGroup {
   name: string;
@@ -16,7 +16,7 @@ export default function AccordionMenu({
   selected = "",
   onSelect = () => {},
 }: Props) {
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const { openGroup, toggleGroup } = useAccordionMenu();
 
   return (
     <div className="accordion">
@@ -29,7 +29,7 @@ export default function AccordionMenu({
                 : ""
             }`}
             onClick={() => {
-              setOpenGroup(openGroup === group.name ? null : group.name);
+              toggleGroup(group.name);
               onSelect(group.name);
             }}
           >

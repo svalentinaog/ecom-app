@@ -1,18 +1,12 @@
 import Container from "@/layouts/Container";
 import { useTranslation } from "react-i18next";
 import type { Product } from "@/types/Product";
-import productsData from "@/data/products.json";
 import ProductCard from "@/components/molecules/common/ProductCard";
+import { useRelatedProducts } from "@/hooks/useRelatedProducts";
 
 export default function RelatedProducts({ currentProduct }: { currentProduct: Product }) {
   const { t } = useTranslation("shop");
-  
-  const relatedProducts = productsData
-    .filter((product) => 
-      product.id !== currentProduct.id && 
-      product.category.es === currentProduct.category.es
-    )
-    .slice(0, 4);
+  const { relatedProducts } = useRelatedProducts(currentProduct);
 
   return (
     <Container>

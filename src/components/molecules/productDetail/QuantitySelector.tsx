@@ -1,3 +1,5 @@
+import { useQuantitySelector } from "@/hooks/useQuantitySelector";
+
 interface QuantitySelectorProps {
   quantity: number;
   setQuantity: (qty: number) => void;
@@ -7,13 +9,10 @@ export default function QuantitySelector({
   quantity,
   setQuantity,
 }: QuantitySelectorProps) {
-  const handleDecrease = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
-  };
-
-  const handleIncrease = () => {
-    setQuantity(quantity + 1);
-  };
+  const { handleDecrease, handleIncrease } = useQuantitySelector(
+    quantity,
+    setQuantity,
+  );
 
   return (
     <div className="quantity-selector">

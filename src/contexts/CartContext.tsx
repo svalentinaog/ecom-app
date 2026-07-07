@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import type { Product } from "@/types/Product";
 
-interface CartItem {
+export interface CartItem {
   product: Product;
   quantity: number;
 }

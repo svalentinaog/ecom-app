@@ -1,13 +1,10 @@
-import { useParams } from "react-router-dom";
-import type { Product } from "@/types/Product";
-import productsData from "@/data/products.json";
+import { useProductDetail } from "@/hooks/useProductDetail";
 
 import ProductCardDetail from "@/components/sections/productDetail/ProductCardDetail";
 import RelatedProducts from "@/components/sections/productDetail/RelatedProducts";
 
 export default function ProductDetailTemplate() {
-  const { id } = useParams();
-  const product: Product | null = productsData.find((p) => p.id === Number(id)) || null;
+  const { product } = useProductDetail();
 
   if (!product) return <div>Product not found</div>;
 

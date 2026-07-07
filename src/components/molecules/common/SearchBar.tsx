@@ -1,6 +1,5 @@
-import type { ChangeEvent } from "react";
 import { search } from "@/assets";
-import { useTranslation } from "react-i18next";
+import { useSearchBar } from "@/hooks/useSearchBar";
 
 type SearchBarProps = {
   value: string;
@@ -9,16 +8,10 @@ type SearchBarProps = {
 };
 
 export default function SearchBar({ value, onChange, onSubmit }: SearchBarProps) {
-  const { t } = useTranslation("common");
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && onSubmit) {
-      onSubmit();
-    }
-  };
+  const { t, handleChange, handleKeyDown } = useSearchBar({
+    onChange,
+    onSubmit,
+  });
 
   return (
     <div className="searchbar">

@@ -17,6 +17,7 @@
 @use "./components/product-not-found";
 @use "./components/auth";
 @use "./components/cart";
+@use "./components/cart-empty";
 
 // Layout
 @use "./layout/container";

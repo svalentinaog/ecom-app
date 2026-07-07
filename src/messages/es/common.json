@@ -2,6 +2,7 @@
   "navigation": {
     "home": "Inicio",
     "shop": "Tienda",
+    "cart": "Carrito de Compras",
     "contact": "Contacto",
     "access": "Acceso",
     "legalNotice": "Aviso legal",
@@ -87,7 +88,8 @@
       "remove": "Eliminar del Carrito"
     },
     "summary": {
-      "title": "Total de carrito",
+      "title": "Resumen de carrito",
+      "quantityProducts": "Cantidad de productos",
       "subtotal": "Subtotal",
       "shipping": "Envío",
       "shippingFree": "Gratis",

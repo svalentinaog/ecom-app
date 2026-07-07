@@ -1,42 +1,17 @@
 import type { Product } from "@/types/Product";
-import { useTranslation } from "react-i18next";
 import CommonButton from "@/components/atoms/CommonButton";
-import { useNavigate, useParams } from "react-router-dom";
-import { useCart } from "@/contexts/CartContext";
+import { useProductCard } from "@/hooks/useProductCard";
 
-export default function ProductCard({
-  id,
-  images,
-  name,
-  price,
-  rating,
-  discount,
-  oldPrice,
-}: Product) {
-  const { t } = useTranslation("shop");
-  const { i18n } = useTranslation();
-  const currentLang = (i18n.language as "es" | "en") || "es";
-  const displayName = name[currentLang];
-
-  const navigate = useNavigate();
-  const { lang } = useParams();
-  const { addToCart } = useCart();
-
-  const handleCardClick = () => {
-    navigate(`/${lang}/product/${id}`);
-  };
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    addToCart({ id, images, name, price, rating, discount, oldPrice } as Product);
-  };
+export default function ProductCard(product: Product) {
+  const { t, displayName, handleCardClick, handleAddToCart } =
+    useProductCard(product);
 
   return (
     <div className="card-product" onClick={handleCardClick}>
       <div className="card-product-image-wrapper">
         <img
           className="card-product-image"
-          src={images[0] || "/images/product-image.jpg"}
+          src={product.images[0] || "/images/product-image.jpg"}
           alt={displayName}
         />
       </div>
@@ -44,13 +19,13 @@ export default function ProductCard({
         <div className="card-product-info-content">
           <p className="product-name">{displayName}</p>
           <div className="price-container">
-            <p className="price">${price}</p>
-            <p className="old-price">${oldPrice}</p>
+            <p className="price">${product.price}</p>
+            <p className="old-price">${product.oldPrice}</p>
             <p className="discount">
-              {discount}% {t("product.discount")}
+              {product.discount}% {t("product.discount")}
             </p>
           </div>
-          <p>⭐⭐⭐⭐⭐ ({rating})</p>
+          <p>⭐⭐⭐⭐⭐ ({product.rating})</p>
         </div>
         <div onClick={handleAddToCart}>
           <CommonButton variant="primary-full-width">

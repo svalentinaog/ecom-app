@@ -1,26 +1,8 @@
-import { useTranslation } from "react-i18next";
 import Button from "@/components/atoms/CommonButton";
-import { useForm } from "react-hook-form";
-
-interface IContactInput {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-  acceptTerms: boolean;
-}
+import { useContactForm } from "@/hooks/useContactForm";
 
 export default function ContactForm() {
-  const { t } = useTranslation("contact");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IContactInput>();
-
-  const onSubmit = (data: IContactInput) => {
-    console.log("Form Data:", data);
-  };
+  const { t, register, handleSubmit, errors, onSubmit } = useContactForm();
 
   return (
     <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>

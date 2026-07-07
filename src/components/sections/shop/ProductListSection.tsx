@@ -1,59 +1,24 @@
-import { useTranslation } from "react-i18next";
 import ProductCard from "@/components/molecules/common/ProductCard";
 import ProductNotFound from "@/components/molecules/common/ProductNotFound";
 import Container from "@/layouts/Container";
 import FilterSidebar from "@/components/molecules/shop/FilterSidebar";
-import { useProductFilter } from "@/hooks/useProductFilter";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useShopProductList } from "@/hooks/useShopProductList";
 
 export default function ProductListSection() {
-  const { t, i18n } = useTranslation("shop");
-  const currentLang = (i18n.language as "es" | "en") || "es";
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const searchTerm = searchParams.get("q") || "";
-  const category = searchParams.get("category") || "all";
-  const priceMinParam = searchParams.get("priceMin");
-  const priceMaxParam = searchParams.get("priceMax");
-  const priceRange: [number, number] = [
-    priceMinParam ? parseInt(priceMinParam) : 0,
-    priceMaxParam ? parseInt(priceMaxParam) : 25000
-  ];
-
-  const { filteredProducts, categoryGroups, priceLimits, selectedCategoryInfo } =
-    useProductFilter(currentLang, searchTerm, category, priceRange);
-
-  const handleCategorySelect = (cat: string) => {
-    if (cat === "all") {
-      searchParams.delete("category");
-    } else {
-        searchParams.set("category", cat);
-      }
-    setSearchParams(searchParams);
-    setIsFilterOpen(false);
-  };
-
-  const handlePriceChange = (range: [number, number]) => {
-    if (range[0] === 0) {
-      searchParams.delete("priceMin");
-    } else {
-      searchParams.set("priceMin", range[0].toString());
-    }
-
-    if (range[1] === priceLimits.max) {
-      searchParams.delete("priceMax");
-    } else {
-      searchParams.set("priceMax", range[1].toString());
-    }
-
-    setSearchParams(searchParams);
-  };
-
-  const handleClearFilters = () => {
-    setSearchParams({});
-  };
+  const {
+    t,
+    isFilterOpen,
+    setIsFilterOpen,
+    filteredProducts,
+    categoryGroups,
+    priceLimits,
+    selectedCategoryInfo,
+    priceRange,
+    category,
+    handleCategorySelect,
+    handlePriceChange,
+    handleClearFilters,
+  } = useShopProductList();
 
   return (
     <Container>

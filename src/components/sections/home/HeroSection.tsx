@@ -1,14 +1,12 @@
 import Container from "@/layouts/Container";
 import { imageSection } from "@/assets";
 
-import { useTranslation } from "react-i18next";
-import { useParams, Link } from "react-router-dom";
+import { useHomeHero } from "@/hooks/useHomeHero";
+import { Link } from "react-router-dom";
 import Button from "@/components/atoms/CommonButton";
 
 export default function HeroSection() {
-  const { t } = useTranslation("home");
-  const { lang } = useParams();
-  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
+  const { t, getPath } = useHomeHero();
 
   return (
     <section className="bg-section-home">

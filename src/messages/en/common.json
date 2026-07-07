@@ -2,6 +2,7 @@
   "navigation": {
     "home": "Home",
     "shop": "Shop",
+    "cart": "Shopping Cart",
     "contact": "Contact",
     "access": "Access",
     "legalNotice": "Legal Notice",
@@ -87,7 +88,8 @@
       "remove": "Remove from Cart"
     },
     "summary": {
-      "title": "Cart Total",
+      "title": "Cart Summary",
+      "quantityProducts": "Quantity of products",
       "subtotal": "Subtotal",
       "shipping": "Shipping",
       "shippingFree": "Free",

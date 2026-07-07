@@ -1,17 +1,11 @@
-import { useState, useEffect } from "react";
+import { useProductGallery } from "@/hooks/useProductGallery";
 
 interface ProductGalleryProps {
   images: string[];
 }
 
 export default function ProductGallery({ images }: ProductGalleryProps) {
-  const [selectedImage, setSelectedImage] = useState<string>(images[0] || "");
-
-  useEffect(() => {
-    if (images.length > 0) {
-      setSelectedImage(images[0]);
-    }
-  }, [images]);
+  const { selectedImage, selectImage } = useProductGallery(images);
 
   if (!images || images.length === 0) return null;
 
@@ -25,10 +19,10 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
             className={`product-gallery__thumbnail ${
               selectedImage === img ? "product-gallery__thumbnail--active" : ""
             }`}
-            onClick={() => setSelectedImage(img)}
+            onClick={() => selectImage(img)}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && setSelectedImage(img)}
+            onKeyDown={(e) => e.key === "Enter" && selectImage(img)}
           >
             <img src={img} alt={`Vista ${index + 1}`} />
           </div>

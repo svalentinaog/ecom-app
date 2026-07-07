@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { useParams, Link } from "react-router-dom";
+import { useAuthHero } from "@/hooks/useAuthHero";
+import { Link } from "react-router-dom";
 import CommonButton from "@/components/atoms/CommonButton";
 import Input from "@/components/atoms/Input";
 import Container from "@/layouts/Container";
@@ -9,14 +9,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ mode = "login" }: HeroSectionProps) {
-  const { t } = useTranslation("common");
-  const { lang } = useParams();
-  
-  const getPath = (path: string) => `/${lang}${path === "/" ? "" : path}`;
-
-  const isRegister = mode === "register";
-  const isRecover = mode === "recover-password";
-  const isNewPassword = mode === "new-password";
+  const { t, getPath, isRegister, isRecover, isNewPassword } =
+    useAuthHero(mode);
 
   return (
     <section className="auth-section">
