@@ -11,12 +11,15 @@ export function useShopProductList() {
 
   const searchTerm = searchParams.get("q") || "";
   const category = searchParams.get("category") || "all";
+  const pageParam = searchParams.get("page");
   const priceMinParam = searchParams.get("priceMin");
   const priceMaxParam = searchParams.get("priceMax");
   const priceRange: [number, number] = [
     priceMinParam ? parseInt(priceMinParam, 10) : 0,
     priceMaxParam ? parseInt(priceMaxParam, 10) : 25000,
   ];
+
+  const page = pageParam ? Math.max(1, parseInt(pageParam, 10) || 1) : 1;
 
   const { filteredProducts, categoryGroups, priceLimits, selectedCategoryInfo } =
     useProductFilter(currentLang, searchTerm, category, priceRange);
@@ -30,6 +33,7 @@ export function useShopProductList() {
       nextParams.set("category", cat);
     }
 
+    nextParams.delete("page");
     setSearchParams(nextParams);
     setIsFilterOpen(false);
   };
@@ -49,11 +53,24 @@ export function useShopProductList() {
       nextParams.set("priceMax", range[1].toString());
     }
 
+    nextParams.delete("page");
     setSearchParams(nextParams);
   };
 
   const handleClearFilters = () => {
     setSearchParams({});
+  };
+
+  const setPage = (pageNumber: number) => {
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (pageNumber <= 1) {
+      nextParams.delete("page");
+    } else {
+      nextParams.set("page", pageNumber.toString());
+    }
+
+    setSearchParams(nextParams);
   };
 
   return {
@@ -68,6 +85,8 @@ export function useShopProductList() {
     searchTerm,
     category,
     priceRange,
+    page,
+    setPage,
     handleCategorySelect,
     handlePriceChange,
     handleClearFilters,

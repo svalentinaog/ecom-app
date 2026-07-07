@@ -1,10 +1,12 @@
+import { useEffect, useMemo } from "react";
 import ProductCard from "@/components/molecules/common/ProductCard";
 import ProductNotFound from "@/components/molecules/common/ProductNotFound";
 import Container from "@/layouts/Container";
 import FilterSidebar from "@/components/molecules/shop/FilterSidebar";
+import Pagination from "@/components/molecules/shop/Pagination";
 import { useShopProductList } from "@/hooks/useShopProductList";
-import CommonButton from "@/components/atoms/CommonButton";
-import { refresh } from "@/assets";
+
+const PAGE_SIZE = 9;
 
 export default function ProductListSection() {
   const {
@@ -17,10 +19,36 @@ export default function ProductListSection() {
     selectedCategoryInfo,
     priceRange,
     category,
+    page,
+    setPage,
     handleCategorySelect,
     handlePriceChange,
     handleClearFilters,
   } = useShopProductList();
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PAGE_SIZE));
+
+  const paginatedProducts = useMemo(
+    () => {
+      const startIndex = (page - 1) * PAGE_SIZE;
+      return filteredProducts.slice(startIndex, startIndex + PAGE_SIZE);
+    },
+    [filteredProducts, page]
+  );
+
+  useEffect(() => {
+    if (page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [page, totalPages, setPage]);
+
+  useEffect(() => {
+    const containerElement = document.querySelector(".container");
+
+    if (containerElement) {
+      containerElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [page]);
 
   return (
     <Container>
@@ -105,14 +133,21 @@ export default function ProductListSection() {
             </button>
           </div>
           {filteredProducts.length > 0 ? (
-            <div className="product-list-shop">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} {...product} />
-              ))}
-            </div>
-            ) : (
-              <ProductNotFound onClearFilters={handleClearFilters} />
-            )}
+            <>
+              <div className="product-list-shop">
+                {paginatedProducts.map((product) => (
+                  <ProductCard key={product.id} {...product} />
+                ))}
+              </div>
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={setPage}
+              />
+            </>
+          ) : (
+            <ProductNotFound onClearFilters={handleClearFilters} />
+          )}
         </div>
       </div>
     </Container>

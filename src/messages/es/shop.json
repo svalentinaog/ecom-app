@@ -12,6 +12,11 @@
     "add_to_cart": "Añadir al carrito",
     "discount": "Descuento"
   },
+  "pagination": {
+    "ariaLabel": "Paginación de productos",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
   "relatedProducts": {
     "title": "Otros productos relacionados"
   },
